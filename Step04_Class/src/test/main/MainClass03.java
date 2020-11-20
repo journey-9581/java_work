@@ -12,14 +12,3 @@ public class MainClass03 {
 		System.out.println("hello!");
 	}
 }
-
-
-
-
-
-
-
-
-
-
-

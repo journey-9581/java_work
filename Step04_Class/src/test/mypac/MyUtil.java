@@ -10,3 +10,6 @@ public class MyUtil {
 		System.out.println("음악을 틀어요!");
 	}
 }
+
+// static: class 자체가 field와 메소드를 가질 수 있게 함
+// 객체처럼 여러개를 가지지 않음, 오직 하나만 만들어짐
