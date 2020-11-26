@@ -9,7 +9,7 @@ public class MainClass02 {
 		useRemocon(r1);
 	}
 	
-	public void useRemocon(Remocon r) {
+	public static void useRemocon(Remocon r) {
 		r.up();
 		r.down();
 	}
