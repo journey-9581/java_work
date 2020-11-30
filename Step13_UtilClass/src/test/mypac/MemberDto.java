@@ -1,11 +1,11 @@
 package test.mypac;
 
 public class MemberDto {
-	// 필드
+	//필드
 	private int num;
 	private String name;
 	private String addr;
-	// 디폴트 생성자
+	//디폴트 생성자 
 	public MemberDto() {}
 	public MemberDto(int num, String name, String addr) {
 		super();
