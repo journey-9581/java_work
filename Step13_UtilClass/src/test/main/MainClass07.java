@@ -17,7 +17,7 @@ public class MainClass07 {
 		 * 3. 반복문 돌면서 cars 안에 들어 있는 Car 객체의 참조값을 하나씩 순서대로
 		 *    참조해서 .drive() 메소드를 호출해보세요
 		 *    
-		 *    (콘솔창에 무언가를 출력 x)
+		 *    (콘솔창에 무언가를 출력 x, drive() 메소드 호출)
 		 */
 		
 		List<Car> cars=new ArrayList<>();
