@@ -47,13 +47,17 @@ public class MainClass {
 		JButton btn2=new JButton("메롱");
 		btn2.setBounds(200, 50, 100, 40);
 		f.add(btn2);
-		
-		ActionListener listener2=new ActionListener() {
+		/*
+		btn2.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(f, "약 올리지 마!");
 			}
-		};
-		btn2.addActionListener(listener2);
+		});
+		*/
+		//람다식을 활용하면 아래와 같다
+		btn2.addActionListener((e)->{
+			JOptionPane.showMessageDialog(f, "약 올리지 마!");
+		});
 	}
 }
