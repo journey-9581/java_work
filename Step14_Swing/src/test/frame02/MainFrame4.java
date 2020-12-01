@@ -13,12 +13,6 @@ public class MainFrame4 extends JFrame implements ActionListener{
 	// 생성자
 	public MainFrame4(String title) {
 		super(title); // 부모 생성자에 전달하기
-		
-		ActionListener a=this;
-		JFrame b=this;
-		MainFrame4 c=this;
-		Object d=this;
-		
 		// 레이아웃 매니저 지정하기
 		setLayout(new FlowLayout()); // 물 흐르듯이 배치되는 레이아웃
 		// 버튼 3개를 만들고
