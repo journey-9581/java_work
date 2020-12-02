@@ -41,11 +41,12 @@ public class MemberDto {
 		this.addr=addr;
 	} // new MemberDto(1, "kim", "nrg"); 등의 형태와 연결
 	
-	//필드의 num 값을 수정하는 setter 메소드
+	// 필드에 저장된 num 값을 리턴해주는 getter 메소드
 	public int getNum() {
 		return num;
 	}
-	// 필드에 저장된 num 값을 리턴해주는 getter 메소드
+	
+	//필드의 num 값을 수정하는 setter 메소드
 	public void setNum(int num) {
 		this.num = num;
 	}
