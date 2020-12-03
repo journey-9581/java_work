@@ -17,22 +17,22 @@ public class MainClass14 {
 		 */
 		
 		File f=new File("c:/myFolder/memo.txt");
-				try {
-					FileReader fr = new FileReader(f);
-					BufferedReader br=new BufferedReader(fr);
-					//아래 두 줄의 코드를 무한 루프에서 수행하다가
-					//readLine() 메소드가 null을 리턴하면 반복문 탈출
-					while(true) {
-					String line=br.readLine();
-					if(line==null) {
-						break;
-					}
-						System.out.println(line);
-					}
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}	
+			try {
+				FileReader fr = new FileReader(f);
+				BufferedReader br=new BufferedReader(fr);
+				//아래 두 줄의 코드를 무한 루프에서 수행하다가
+				//readLine() 메소드가 null을 리턴하면 반복문 탈출
+				while(true) {
+				String line=br.readLine();
+				if(line==null) {
+					break;
+				}
+					System.out.println(line);
+				}
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}	
 	}
 }
