@@ -25,7 +25,6 @@ import test.util.DBConnect;
 
 public class MainClass06 {
 	public static void main(String[] args) {
-		
 		//콘솔창 스캔
 		Scanner scan=new Scanner(System.in);
 		System.out.println("검색할 회원 정보 입력:");
