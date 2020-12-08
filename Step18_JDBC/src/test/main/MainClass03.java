@@ -52,3 +52,13 @@ public class MainClass03 {
 		}
 	}
 }
+
+//String sql="delete from member where num=?"
+//pstmt.setInt(1,100);
+//flag=pstmt.executeUpdate();
+
+//String sql="update member set name=?, addr=? where num=?"
+//pstmt.setString(1, "kim");
+//pstmt.setString(2, "nrg");
+//pstmt.setInt(3,100);
+//flag=pstmt.executeUpdate();
