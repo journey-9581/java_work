@@ -17,6 +17,8 @@ import test.util.DBConnect;
 
 public class MainClass07 {
 	public static void main(String[] args) {
+		
+		
 		//콘솔창 스캔
 		Scanner scan=new Scanner(System.in);
 		System.out.println("검색할 회원 정보 입력:");
@@ -29,12 +31,17 @@ public class MainClass07 {
 		ResultSet rs=null;
 				
 		try {
+			//DBConnet 객체를 이용해서 Connection 객체의 참조값 얻어내기
 			DBConnect dbconn=new DBConnect();
 			conn=dbconn.getConn();
-					
+			
+			//실행한 sql문(SELECT)의 뼈대 구성하기(아직 미완성이기 때문에 뼈대)
 			String sql="select name,addr from member where num=?";
+			//sql문을 대신 실행해줄 객체의 참조값 얻어오기
 			pstmt=conn.prepareStatement(sql);
+			//?에 값 바인딩 하기
 			pstmt.setInt(1, num);
+			//SELECT문 수행하고 결과를 ResultSet으로 받기
 			rs=pstmt.executeQuery();
 			if(rs.next()) {//select 된 결과가 있다면
 				//MemberDto 객체를 생성해서
@@ -65,3 +72,6 @@ public class MainClass07 {
 		}
 	}
 }
+
+//SELECT -> .executeQuery() 후 ResultSet로 받기
+//INSERT, UPDATE, DELETE -> .executeUpdate() 후 int로 받기 
