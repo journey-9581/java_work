@@ -67,6 +67,8 @@ public class MemberFrame extends JFrame implements ActionListener{
 		JScrollPane scPane=new JScrollPane(table);
 		//스크롤 패널을 프레임의 중앙에 배치하기
 		add(scPane, BorderLayout.CENTER);
+		//
+		printMember();
 	}
 	
 	//메인 메소드
