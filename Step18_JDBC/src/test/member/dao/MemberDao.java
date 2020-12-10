@@ -9,6 +9,16 @@ package test.member.dao;
  * 
  * - 필요한 객체를 담을 지역변수를 선언하는 위치도 중요하다
  * - 필요한 객체를 생성하는 위치도 중요하다
+ * 
+ * Data Access Object (DAO)
+ * 
+ * - DB에 INSERT, UPDATE, DELETE, SELECT 작업을 수행하는 객체
+ * - Table마다 하나의 DAO 혹은 주제(카테고리)마다 하나의 DAO를 작성하게 된다
+ * - DAO를 만들기 위해서는 DTO 클래스를 미리 설계를 하고 만들어야 한다
+ * - 주제(카테고리)에 관련된 DAO는 여러개의 Table의 join이 일어날 수도 있다
+ *   따라서 하나의 Table당 하나의 DAO는 아닌 것이다
+ *   예를 들어 사원 정보를 출력한다고 가정해보면
+ *   emp, dept, salgrade 3개의 테이블이 join이 일어날 수도 있다
  */
 
 import java.sql.Connection;
