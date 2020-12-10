@@ -36,6 +36,7 @@ public class MainClass08 {
 				dto.setName(rs.getString("name"));
 				dto.setAddr(rs.getString("addr"));
 				//생성된 MemberDto 객체의 참조값을 ArrayList 객체에 누적 시킨다
+				
 				list.add(dto);
 			}
 		}catch(Exception e){
