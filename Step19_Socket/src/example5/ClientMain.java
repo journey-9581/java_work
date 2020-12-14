@@ -76,9 +76,9 @@ public class ClientMain extends JFrame implements ActionListener{
 			//소켓 객체
 			Socket socket=new Socket("127.0.0.1", 5000);
 			//서버에 문자열을 출력할 객체
-			BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+			bw=new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 			//서버가 전송하는 문자열을 읽어들일 객체
-			BufferedReader br=new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			br=new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			//새로운 스레드를 시작 시켜서 서버에서 문자열이 도착하는지 지속적으로 대기한다
 			new ClientThread().start();
 		} catch(Exception e) {
@@ -118,7 +118,6 @@ public class ClientMain extends JFrame implements ActionListener{
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				
 			}
 		}
 	}
