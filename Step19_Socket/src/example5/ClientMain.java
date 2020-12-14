@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -16,18 +18,20 @@ import java.net.UnknownHostException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class ClientMain extends JFrame implements ActionListener{
+public class ClientMain extends JFrame implements ActionListener, KeyListener{
 	//필요한 필드 정의하기
 	JTextField tf;
 	Socket socket;
 	BufferedWriter bw;
 	BufferedReader br;
 	JTextArea ta;
+	String chatName; //대화명을 저장할 필드
 	
 	//생성자
 	public ClientMain(String title) {
@@ -56,6 +60,8 @@ public class ClientMain extends JFrame implements ActionListener{
 		add(scPane, BorderLayout.CENTER);
 		//오직 출력 용도로 사용하기 위해
 		ta.setEditable(false);
+		//JTextField에 KeyListener 등록하기
+		tf.addKeyListener(this);
 		//소켓 접속하기
 		connect();
 	}
@@ -72,9 +78,14 @@ public class ClientMain extends JFrame implements ActionListener{
 	}
 	//Socket 서버에 접속을 하는 메소드
 	public void connect() {
+		//대화명을 입력 받아서 필드에 저장하기
+		chatName=JOptionPane.showInputDialog(this, "대화명을 입력하세요");
+		if(chatName==null || chatName.equals("")) {
+			chatName="바보";
+		}
 		try {
 			//소켓 객체
-			Socket socket=new Socket("127.0.0.1", 5000);
+			Socket socket=new Socket("14.63.164.99", 5000);
 			//서버에 문자열을 출력할 객체
 			bw=new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 			//서버가 전송하는 문자열을 읽어들일 객체
@@ -92,7 +103,7 @@ public class ClientMain extends JFrame implements ActionListener{
 		String msg=tf.getText();
 		//2. BufferedWriter 객체를 이용해서 출력한다
 		try {
-			bw.write(msg);
+			bw.write(chatName+" : "+msg);
 			bw.newLine();
 			bw.flush();
 		} catch (IOException e) {
@@ -120,5 +131,35 @@ public class ClientMain extends JFrame implements ActionListener{
 				}
 			}
 		}
+	}
+	@Override
+	public void keyPressed(KeyEvent e) {
+		//만일 엔터키를 눌렀다면 
+		if(e.getKeyCode()==KeyEvent.VK_ENTER) {
+			//1. JTextField 에 입력한 문자열을 읽어와서
+			String msg=tf.getText();
+			//2. BufferedWriter 객체를 이용해서 출력한다
+			try {
+				bw.write(chatName+" : "+msg);
+				bw.newLine();
+				bw.flush();
+			} catch (IOException ioe) {
+				ioe.printStackTrace();
+			}
+			//3. JTextField 에 입력한 문자열 삭제
+			tf.setText("");
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
