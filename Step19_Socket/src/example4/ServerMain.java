@@ -38,7 +38,7 @@ public class ServerMain {
 				OutputStream os=socket.getOutputStream();
 				OutputStreamWriter osw=new OutputStreamWriter(os);
 				BufferedWriter bw=new BufferedWriter(osw);
-				bw.write("안녕 클라이언트야 난 서버야~");
+				bw.write("서버에서 전송하는 메세지");
 				bw.newLine();//개행기호를 메소드를 이용해서 출력할수 있다. 
 				bw.flush();
 				bw.close();

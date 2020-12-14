@@ -25,11 +25,11 @@ public class ClientMain extends JFrame implements ActionListener{
 		
 		//페널을 만들어서 프레임의 위쪽에 배치하기 
 		JPanel topPanel=new JPanel();
-		topPanel.setBackground(Color.YELLOW);
+		topPanel.setBackground(Color.WHITE);
 		add(topPanel, BorderLayout.NORTH);
 		
 		//프레임에 UI 배치하기
-		tf=new JTextField(10);
+		tf=new JTextField(20);
 		JButton sendBtn=new JButton("Send");
 		topPanel.add(tf);
 		topPanel.add(sendBtn);
@@ -41,7 +41,7 @@ public class ClientMain extends JFrame implements ActionListener{
 		//프레임객체 생성하면서 프레임의 제목을 chatting 으로 지정하기 
 		ClientMain f=new ClientMain("chatting");
 		//프레임의 x좌표, y좌표, width, height 설정하기
-		f.setBounds(100, 100, 300, 200);
+		f.setBounds(100, 100, 800, 500);
 		//프레임을 닫을때 프로세스도 종료 되도록 한다. 
 		f.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		//프레임을 화면상에 보이게 하기 
