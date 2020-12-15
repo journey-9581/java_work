@@ -111,6 +111,10 @@ public class ServerMain {
 						//모든 클라이언트에게 대화명 목록 보내주기
 						sendChatNameList();
 					}
+					//클라이언트의 접속이 끊기면
+					if(line==null) {
+						break; //반복문 while을 탈출하도록 한다
+					}
 					//서버가 특정 클라이언트에게 받은 문자열을 모든 클라이언트에게 보낸다
 					sendMessage(line);
 				}
@@ -118,14 +122,21 @@ public class ServerMain {
 				e.printStackTrace();
 			}finally {
 				try {
+					//현재 스레드를 목록에서 제거하기
+					threadList.remove(this);
+					//누가 퇴장하는지 정보를 보낸다
+					JSONObject jsonObj=new JSONObject();
+					jsonObj.put("type", "out");
+					jsonObj.put("name", this.chatName);
+					sendMessage(jsonObj.toString());
+					//참여자 목록 업데이트
+					sendChatNameList();
+					//socket을 닫아준다
 					socket.close();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
-			//현재 여기에 실행순서가 넘어온 스레드의 참조값은? : this
-			//오류가 나거나 접속 종료된 스레드는 목록에서 제거해야한다
-			threadList.remove(this);
 		}//run()
 	}//class ServerThread
-}
+}//class SeverMain

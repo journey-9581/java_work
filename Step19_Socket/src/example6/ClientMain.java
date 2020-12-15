@@ -26,6 +26,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 /*
  * - 대화방에 현재 누가 참여하고 있는지 목록 출력하기
@@ -50,6 +51,7 @@ public class ClientMain extends JFrame implements ActionListener, KeyListener{
 	BufferedReader br;
 	JTextArea ta;
 	String chatName; //대화명을 저장할 필드
+	JList<String> jList;
 	
 	//생성자
 	public ClientMain(String title) {
@@ -81,7 +83,7 @@ public class ClientMain extends JFrame implements ActionListener, KeyListener{
 		//JTextField에 KeyListener 등록하기
 		tf.addKeyListener(this);
 		//참여자 목록을 출력할 준비
-		JList<String> jList=new JList<>();
+		jList=new JList<>();
 		jList.setBackground(Color.GREEN);
 		
 		JPanel rightPanel=new JPanel();
@@ -163,6 +165,26 @@ public class ClientMain extends JFrame implements ActionListener, KeyListener{
 						String content=jsonObj.getString("content");
 						ta.append(name+" : "+content);
 						ta.append("\r\n");
+					}else if(type.equals("members")) {
+						//"list"라는 키값으로 지정된 JSONArray 객체 얻어오기
+						JSONArray jsonArr=jsonObj.getJSONArray("list");
+						//참여자 목록을 저장할 Vector
+						Vector<String> list=new Vector<>();
+						for(int i=0; i<jsonArr.length(); i++) {
+							//JSONArray에서 i번째 참여자 명단을 얻어와서
+							String tmp=jsonArr.getString(i);
+							//Vector에 누적시키기
+							list.add(tmp);
+						}
+						//반복문 돌고 난 후 참여자 목록 Vector를 JList에 연결하기
+						jList.setListData(list);
+					}else if(type.equals("out")) {
+						String name=jsonObj.getString("name");
+						ta.append("# "+name+" # 님이 퇴장 했습니다");
+						ta.append("\r\n");
+					}
+					if(line==null) {
+						break; //
 					}
 					//출력할 문서의 높이
 					int height=ta.getDocument().getLength();
